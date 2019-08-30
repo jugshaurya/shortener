@@ -1,0 +1,35 @@
+.container {
+  border: 3px solid red;
+}
+
+.navbar{
+  height: 10vh;
+}
+.row{
+  border: 3px solid blue;
+
+}
+
+.brand{
+  margin-left: 10px;
+  font-size: 2em;
+  color: white;
+}
+
+.back {
+  position: relative;
+  width : 100%;
+  margin: 0 auto;
+}
+
+.back > img {
+  width: 100% ;
+  height: 90vh;
+}
+
+.form-page{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 50%;
+}
