@@ -17,10 +17,17 @@ $(() => {
       data: JSON.stringify(pair),
       dataType: 'json',
       contentType: 'application/json;charset=utf-8',
-    }).then(res => {
-      console.log(res)
+    })
+    .then(res => {
+      $('.result').text(`http://shau.ya/${res.name}`)
+      $('.result').attr( 'href', `http://shau.ya/${res.name}`)
+
     }).catch(err => {
-      console.log(err)
+      $('.result').html(`
+        <div class="alert alert-danger" role="alert">
+          ${err.responseJSON}
+        </div>
+      `)
     })
   })  
 

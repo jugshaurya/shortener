@@ -1,3 +1,8 @@
+*{
+  margin:0px;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 .navbar{
   height: 10vh;
@@ -34,4 +39,11 @@
 
 .short{
   width:30px;
+}
+
+.result {
+  font-size: 2em;
+  margin-top: 1em;
+  display: block;
+  text-align: center;
 }

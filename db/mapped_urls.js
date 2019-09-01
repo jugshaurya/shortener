@@ -24,6 +24,7 @@ function validateUrl(value) {
 }
 
 function validateName(value) {
+  // console.log(value)
   // only alphanumbers with _ are allowed
   return /^[a-z A-Z0-9\\_\\"]+$/i.test(value);
 }
@@ -31,6 +32,8 @@ function validateName(value) {
 function isValid(pair) {
   const name = pair.name
   const url = pair.url
+  // console.log(validateUrl(url))
+  // console.log(validateName(name))
   return (
     url && url.trim() !== '' &&
     validateUrl(url) && url.length >= 1 && url.length <= 100 &&
@@ -41,22 +44,29 @@ function isValid(pair) {
 }
 
 function alreadyExist(pair) {
-  //check if pair.name already exist
+  //check if pair.name already exist in db
+  return false
 }
 
 function validateAndReturn (pair) { 
   const valid = isValid(pair)
   const exist = alreadyExist(pair)
 
-  if ( valid && !exist ){
-    // insert into db and return the inserted - pair
-  }else if (exist) {
-    // return name already exist, cannot be mapped
-
-  }else if (valid) {
-    // return 500 , not a valid pair
+  if (!valid) {
+    return Promise.reject('Pair is Invalid !')
   }
 
+  if (exist) {
+    return Promise.reject('Choose other name , already exist in DB')
+  }
+
+  if (valid && !exist) {
+    // insert into db and return the inserted - pair and returns a Promise
+    // return collection.insert(pair)
+    return Promise.resolve(pair)
+  }
+
+  return Promise.reject('Something is Wrong Shaurya is not able to find out!!')
 }
 
 module.exports = {

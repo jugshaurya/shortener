@@ -8,18 +8,25 @@ app.use(express.static(__dirname + '/public'))
 app.use(express.json())
 
 app.post('/api/short', (req, res) => {
-  console.log(req.body)
-
+  
   const pair = {
     url: req.body.url,
-    name: req.body.url
+    name: req.body.name
   }
 
   validateAndReturn(pair)
+    .then(result =>  {
+      res.json(result)
+    })
+    .catch(err => {
+      // console.log(err)
+      res.status(500)
+      res.json(err)
+    })
 })
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 8081
 app.listen(port, () => {
-  console.log(`Listening on port ${port} `)
+  console.log(`Listening on port ${port}`)
 })
 
