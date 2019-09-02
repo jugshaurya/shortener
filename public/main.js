@@ -1,16 +1,14 @@
 $(() => {
-  console.log('sjfgk')
-  // JS Gracefull Fallback 
   $('form').submit((event) => {
+    // JS Gracefull Fallback 
     event.preventDefault();
-    const url = $('#url').val()
-    const name = $('#name').val()
 
     const pair = {
-      url,
-      name
+      url : $('#url').val(),
+      name: $('#name').val()
     }
 
+    const $result = $('.result')
     $.ajax({
       type: 'POST',
       url: 'api/short',
@@ -19,16 +17,15 @@ $(() => {
       contentType: 'application/json;charset=utf-8',
     })
     .then(res => {
-      $('.result').text(`http://shau.ya/${res.name}`)
-      $('.result').attr( 'href', `http://shau.ya/${res.name}`)
+      $result.text(`deployed_url/${res.name}`)
+      $result.attr('href', `http://shau.ya/${res.name}`)
 
     }).catch(err => {
-      $('.result').html(`
+      $result.html(`
         <div class="alert alert-danger" role="alert">
           ${err.responseJSON}
         </div>
       `)
     })
   })  
-
 })

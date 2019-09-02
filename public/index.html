@@ -11,8 +11,8 @@
 </head>
 
 <body>
-  <!-- Color codes : 4717f6 e7dfdd -->
-  <nav class="navbar navbar-light" style="background-color: #0e0b16;">
+  <!-- Color codes : 4717f6 e7dfdd 1a1a20 -->
+  <nav class="navbar navbar-light" style="background-color: #1a1a20;">
     <a class="navbar-brand" href="#">
       <img src="live.svg" width="50" height="50" class="d-inline-block align-top" alt="">
       <span class="brand">
@@ -28,20 +28,20 @@
       <h3> Shorten your URL </h3>
       <br>
       <br>
-      <form>
+      <form action = "api/short" method="POST">
         <div class="form-group">
           <label for="url">URL</label>
-          <input type="url" class="form-control" id="url" aria-describedby="emailHelp" placeholder="https://www.something.com">
+          <input type="text" class="form-control" id="url" name ="url" placeholder="https://www.something.com">
           <small id="urlHelp" class="form-text text-muted">Enter your URL to make it shorter.</small>
         </div>
         <div class="form-group">
           <label for="name"> <img class="short" src="short.svg" alt="short"> Short Name</label>
-          <input type="text" class="form-control" id="name" placeholder="something-small">
+          <input type="text" class="form-control" id="name" name ="name" placeholder="something-small">
         </div>
         <button type="submit" class="btn btn-primary">Short it!</button>
       </form>
 
-      <a class="result" target ='_blank'></a>
+      <a class="result" target= '_blank'></a>
     </div>
   </div>
 

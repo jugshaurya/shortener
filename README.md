@@ -18,3 +18,15 @@ Lets Build a Full Stack Url Shortner
 - use collection to figure out if mapping exist or not 
  - if exist throw error
  - else add a new entry to database 
+
+
+Database Creation for testing
+-----------------
+
+- use dbname => create a db in mongodb
+-switched to db shau_shortner
+> db
+shau_shortner
+> db.createCollection('mapped_urls')
+{ "ok" : 1 }
+> 

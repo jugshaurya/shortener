@@ -7,10 +7,7 @@
 .navbar{
   height: 10vh;
 }
-.row{
-  border: 3px solid blue;
 
-}
 
 .brand{
   margin-left: 10px;
@@ -34,7 +31,7 @@
   position: absolute;
   top: 20%;
   left: 50%;
-  width: 50%;
+  width: 40%;
 }
 
 .short{
