@@ -1,0 +1,32 @@
+{
+    "name": "urlshortner",
+    "version": 2,
+    "env": {
+        "MONGODB_URL": "@urlshortner_db_connection"
+    },
+    "builds": [{
+            "src": "index.js",
+            "use": "@now/node-server"
+        },
+        {
+            "src": "public/**",
+            "use": "@now/static"
+        }
+    ],
+    "routes": [
+    {
+        "src": "/api/short",
+        "dest": "/index.js",
+        "methods": ["POST"]
+    },
+    {
+        "src": "/*",
+        "dest": "/index.js",
+        "methods": ["GET"]
+    },
+    {
+        "src": "/(.*)",
+        "dest": "/public/$1"
+    }
+    ]
+}
