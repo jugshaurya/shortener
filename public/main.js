@@ -17,8 +17,10 @@ $(() => {
       contentType: 'application/json;charset=utf-8',
     })
     .then(res => {
-      $result.text(`deployed_url/${res.name}`)
-      $result.attr('href', `http://shau.ya/${res.name}`)
+      const deployed_url = 'localhost:8081' 
+      const newLink = `${deployed_url}/${res.name}` 
+      $result.text(newLink)
+      $result.attr('href', newLink)
 
     }).catch(err => {
       $result.html(`

@@ -7,7 +7,21 @@ app.use(express.static(__dirname + '/public'))
 app.use(express.urlencoded({ extended: true })) // for JS Gracefull Fallback
 app.use(express.json())
 
-const { validateAndReturn } = require('./db/mapped_urls')
+const { validateAndReturn, findAndReturn } = require('./db/mapped_urls')
+
+app.get('/:name', (req, res) => {
+  console.log('sdf')
+  findAndReturn(req.params.name)
+    .then(pair => {
+      res.redirect(`${pair.url}`)
+    })
+    .catch (err => {
+      res.redirect(`/error.html?msg=${err}`)
+    })
+    // 2. if found redirect to corresponding url
+  // else show 404 page.
+
+})
 
 app.post('/api/short', (req, res) => {
   const pair = {

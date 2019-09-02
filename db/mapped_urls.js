@@ -16,7 +16,7 @@ function validateAndReturn (pair) {
     table.findOne({ name : pair.name })
     .then(alreadyAvailable => {
       if (!valid) {
-        reject('URL or short-name is Invalid! Only alphanum with or without underscore are allowed')
+        reject('URL or short-name is Invalid!')
       }
       // alreadyAvailable === null  => not available in DB  
       if (alreadyAvailable === null) {
@@ -28,8 +28,28 @@ function validateAndReturn (pair) {
   })
 }
 
+function findAndReturn (name) { 
+  return new Promise ((resolve, reject) => {
+    validation.validateName(name) 
+    ? 
+      table.findOne({ name })
+      .then(available => {
+        // available === null  => not available in DB  
+        if (available === null) {
+          reject('No mapping Found for Given Name')
+        } else {
+          resolve(available)
+        }
+      })
+    :
+      reject('Invalid Name')
+  })
+
+}
+
 module.exports = {
-  validateAndReturn
+  validateAndReturn,
+  findAndReturn
 }
 
 

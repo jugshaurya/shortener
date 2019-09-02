@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Error</title>
+    <style>
+        .err-box {
+            width : 50%;
+            margin: 20vh auto;
+        }
+
+        .err-box h3, .err-box h1{
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="err-box">
+        <h3>Page Not Found</h3>
+        <h1>404</h1>
+        <div class="alert alert-danger" role="alert">
+            <strong id="err"></strong>
+        </div>
+    </div>
+
+    <script>
+        const err = document.querySelector('#err')
+        let err_msg =  window.location.search.split('=')[1]
+        let count = 0
+        for (let i = 0; i < err_msg.length; i++) {
+            if (err_msg[i]==='%'){
+                count+=1
+            }  
+        }
+        for (let i = 0; i < count; i++) {
+            err_msg = err_msg.replace('%20', ' ')
+            console.log(err_msg)
+        }
+        err.textContent = err_msg
+    </script>
+    
+</body>
+</html>
