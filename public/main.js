@@ -17,8 +17,8 @@ $(() => {
         contentType: 'application/json;charset=utf-8',
       })
       .then(res => {
-        const deployed_url = 'https://urlshortner.jugshaurya.now.sh'
-        const newLink = `${deployed_url}/${res.name}`
+        const deployed_url = 'https://little.now.sh'
+        const newLink = `${deployed_url}/s/${res.name}`
         $result.text(newLink)
         $result.attr('href', newLink)
 
@@ -31,3 +31,11 @@ $(() => {
       })
   })
 })
+
+
+
+// {
+//     "src": "/(?<id>[^/]+)",
+//     "dest": "/index.js/$id",
+//     "methods": ["GET"]
+// }

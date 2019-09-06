@@ -14,7 +14,7 @@ const {
   findAndReturn
 } = require('./db/mapped_urls')
 
-app.get('/:name', (req, res) => {
+app.get('/s/:name', (req, res) => {
   findAndReturn(req.params.name)
     .then(pair => {
       res.redirect(`${pair.url}`)

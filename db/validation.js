@@ -17,7 +17,7 @@
   }
   
   function validateName(name) {
-    const isCorrectName = /^[a-z A-Z0-9\\_\\"]+$/i.test(name);
+    const isCorrectName = /^[a-zA-Z0-9\\_\\"]+$/i.test(name);
     return isCorrectName && name && name.trim() !== '' && name.length >= 1 && name.length <= 20 
   }
   
