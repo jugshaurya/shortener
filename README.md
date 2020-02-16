@@ -1,4 +1,8 @@
-# urlShortner 
+# :octocat: urlShortner
+
+<img src="https://img.shields.io/badge/made%20with-mongodb-green.svg" alt="made with mongodb">
+ <img src="https://img.shields.io/badge/made%20with-express-black.svg" alt="made with express">
+<img src="https://img.shields.io/github/last-commit/jugshaurya/urlShortner" alt="last-commit"> <img src="https://img.shields.io/github/languages/code-size/jugshaurya/urlShortner" alt="code-size">
 
 Yet another shortner !
 
@@ -6,8 +10,8 @@ Yet another shortner !
 Full stack Url Shortner with tech stack :
 (M)ongo
 (E)xpress
-(N)ode 
- + now 
+(N)ode
+ + now
 ```
 
 ### User Guide
@@ -15,11 +19,19 @@ Full stack Url Shortner with tech stack :
 ```
     1. visit https://little.now.sh
     2. create a shorten-URL
-    3. visit https://little.now.sh/s/nameUProvided
-    4. Simple! 
+    3. visit https://little.now.sh/s/{nameUProvided}
+    4. Simple!
+```
+
+### Developer Guide
+
+```
+    npm run dev
+    visit localhost:8081 to test the app
 ```
 
 ### Followed Steps
+
 ```
 - npm init
 - npm install express( Fast, unopinionated, minimalist web framework for node).
@@ -34,14 +46,15 @@ Full stack Url Shortner with tech stack :
 - setting connection for Database
 - made an api for serving data inside mapped_urls.js
 - make a connection to db
-- use collection to figure out if mapping exist or not 
+- use collection to figure out if mapping exist or not
     - if exist throw error
-    - else add a new entry to database 
+    - else add a new entry to database
 ```
 
-###  Database Creation for testing
+### Database Creation for testing
+
 ```
-$ use dbname 
+$ use dbname
     create a db in mongodb
 $ db.createCollection('mapped_urls')
     created a collection, Output : { "ok" : 1 }
@@ -55,4 +68,3 @@ $ db.createCollection('mapped_urls')
 3. $ now -e MONGODB_URL=@mysql-secret
 4. now alias ___ little.now.sh
 ```
-

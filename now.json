@@ -4,8 +4,9 @@
   "env": {
     "MONGODB_URL": "@urlshortner_db_connection"
   },
-  "builds": [{
-      "src": "index.js",
+  "builds": [
+    {
+      "src": "server.js",
       "use": "@now/node-server"
     },
     {
@@ -13,16 +14,15 @@
       "use": "@now/static"
     }
   ],
-  "routes": 
-  [
+  "routes": [
     {
       "src": "/api/short",
-      "dest": "/index.js",
+      "dest": "/server.js",
       "methods": ["POST"]
     },
     {
       "src": "/s/(.*)",
-      "dest": "/index.js",
+      "dest": "/server.js",
       "methods": ["GET"]
     },
     {

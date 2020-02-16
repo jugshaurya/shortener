@@ -2,54 +2,122 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>shau.ya Url Shortner</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#ddd" />
+  <meta name="description" content="Yet Another URL Shortner Website." />
+  <link rel="icon" href="assets/favicon.png" />
+  <link rel="stylesheet" href="index.css">
+  <title>URL Shortner - Shaurya </title>
 </head>
 
 <body>
-  <!-- Color codes : 4717f6 e7dfdd 1a1a20 -->
-  <nav class="navbar navbar-light" style="background-color: #1a1a20;">
-    <a class="navbar-brand" href="#">
-      <img src="live.svg" width="50" height="50" class="d-inline-block align-top" alt="">
-      <span class="brand">
-        shau.ya
-      </span>
-    </a>
-  </nav>
 
+  <div class="top-container">
+    <h2>🎩 Short Your URL 🎩</h2>
+    <div class="container" id="container">
+      <div class="form-container up-container">
+        <form action="api/short" method="POST">
+          <div class="result"></div>
 
-  <div class="back">
-    <img src="back3.jpg" alt="Image">
-    <div class="container form-page">
-      <h3> Shorten your URL </h3>
-      <br>
-      <br>
-      <form action = "api/short" method="POST">
-        <div class="form-group">
-          <label for="url">URL</label>
-          <input type="text" class="form-control" id="url" name ="url" placeholder="https://www.something.com">
-          <small id="urlHelp" class="form-text text-muted">Enter your URL to make it shorter.</small>
+          <h2>🐅 Welcome Again!</h2>
+          <input type="text" placeholder="URL" id="url2" name="url" />
+          <input type="text" placeholder="Short Name" id="shortname2" name="name" />
+          <button>📌 Short it 📌</button>
+        </form>
+      </div>
+      <div class="form-container in-container">
+        <form action="api/short" method="POST">
+          <div class="result"></div>
+
+          <h2> 🐅 Welcome </h2>
+          <input type="text" placeholder="URL" id="url1" name="url" />
+          <input type="text" placeholder="Short Name" id="shortname1" name="name" />
+          <button>📌 Short it 📌</button>
+        </form>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1>👻 Hello, Friend!</h1>
+            <p>Enter your URL and a short name that can easily be remembered.</p>
+            <p>Yes they both are same, It is just an Effect! </p>
+            <button class="ghost" id="in">Slide</button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>👻 Hello, Friend!</h1>
+            <p>Enter your URL and a short name that can easily be remembered.</p>
+            <button type="submit" class="ghost" id="up">Slide</button>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="name"> <img class="short" src="short.svg" alt="short"> Short Name</label>
-          <input type="text" class="form-control" id="name" name ="name" placeholder="something-small">
-          <small id="nameHelp" class="form-text text-muted">seperate multiple words with underscore(_)</small>
-        </div>
-        <button type ="submit" class="btn btn-primary">Short it!</button>
-      </form>
-
-      <a href = "" class="result" target= '_blank'></a>
+      </div>
     </div>
   </div>
+  <footer>
+    <p>
+      Created with 💙 by Shaurya Singhal
+    </p>
+  </footer>
+
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="main.js"></script>
+
+  <script>
+    $(() => {
+      const $result = $(".result");
+      $("form").submit(event => {
+        // JS Gracefull Fallback
+        event.preventDefault();
+        const pair = {
+          url: $("#url1").val() || $("#url2").val(),
+          name: $("#shortname1").val() || $("#shortname2").val()
+        }
+        $.ajax({
+          type: "POST",
+          url: "api/shortit",
+          data: JSON.stringify(pair),
+          dataType: "json",
+          contentType: "application/json;charset=utf-8"
+        })
+          .then((obj => {
+            const deployed_url = "https://little.now.sh";
+            // in development change it to https://localhost:8081
+            const newLink = `${deployed_url}/s/${obj.name}`;
+            $result.html(`<a class="short-link" href=${newLink} target="_blank"> ${newLink} </a>`);
+            $("#url1").val("")
+            $("#url2").val("")
+            $("#shortname1").val("")
+            $("#shortname2").val("")
+          }))
+          .catch(err => {
+            $result.html(`<div class="alert alert-danger" role="alert"> ${err.responseJSON.message} </div>`);
+            $("#url1").val("")
+            $("#url2").val("")
+            $("#shortname1").val("")
+            $("#shortname2").val("")
+
+          })
+      });
+    });
+
+  </script>
+
+  <script>
+    const upButton = document.getElementById('up');
+    const inButton = document.getElementById('in');
+    const container = document.getElementById('container');
+
+    upButton.addEventListener('click', () => {
+      container.classList.add("right-panel-active");
+    });
+
+    inButton.addEventListener('click', () => {
+      container.classList.remove("right-panel-active");
+    });
+  </script>
 
 </body>
 
 </html>
+gxagFIGruZc9ki9z
