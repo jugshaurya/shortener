@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#ddd" />
+  <meta name="description" content="Yet Another URL Shortner Website." />
+  <link rel="icon" href="../favicon.png" />
+  <link rel="stylesheet" href="../style.css">
+  <title>URL Shortner - Shaurya </title>
+</head>
+
+<body>
+
+
+  <div class="top-container">
+    <h2 style="background: linear-gradient(to right, #ff2b6c, #eb114e);">🎩 ERROR {{status}} 🎩</h2>
+    <div class="container" id="container">
+      <div class="form-container up-container">
+        <form>
+          <div class="result"></div>
+          <h2 style="background: linear-gradient(to right, #eb114e, #ff2b6c);">🐅 Sorry!</h2>
+          <p style="font-size:large">"{{message}}"</p>
+          <button type="button" id="home1">📌 Go to Home Page 📌</button>
+        </form>
+      </div>
+      <div class="form-container in-container">
+        <form>
+          <div class="result"></div>
+
+          <h2 style="background: linear-gradient(to right, #eb114e, #ff2b6c); border:3px solid #fff;"> 🐅 Sorry! </h2>
+          <p style="font-size:large">"{{message}}"</p>
+
+          <button type="button" id="home2">📌 Go to Home Page 📌</button>
+        </form>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay" style="background: linear-gradient(to right, #ff2b6c, #eb114e);">
+          <div class="overlay-panel overlay-left">
+            <h1>👻 Hello, Friend!</h1>
+            <p>Something went wrong with redirection check your short name or create one first.</p>
+            <p>Yes they both are same, It is just an Effect! </p>
+            <button class="ghost" id="in">Slide</button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>👻 Hello, Friend!</h1>
+            <p>Something went wrong with redirection check your short name or create one first.</p>
+            <button class="ghost" id="up">Slide</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>
+      &copy; 2020 - Created with 💙 by Shaurya Singhal
+    </p>
+  </footer>
+
+  <script>
+    const upButton = document.getElementById('up');
+    const inButton = document.getElementById('in');
+    const container = document.getElementById('container');
+
+    const home1 = document.getElementById('home1');
+    const home2 = document.getElementById('home2');
+
+    upButton.addEventListener('click', () => {
+      container.classList.add("right-panel-active");
+    });
+
+    inButton.addEventListener('click', () => {
+      container.classList.remove("right-panel-active");
+    });
+
+    home1.addEventListener('click', () => {
+      window.location = "/"
+    });
+
+    home2.addEventListener('click', () => {
+      window.location = "/"
+    });
+
+  </script>
+
+</body>
+
+</html>

@@ -13,8 +13,8 @@ body {
   flex-direction: column;
   font-family: "Lemonada", sans-serif;
   position: relative;
-  background: url("./assets/back.png");
-  background: url("./assets/back2.png");
+  background: url("back.png");
+  background: url("back2.png");
 }
 
 h1 {
@@ -68,6 +68,7 @@ button {
   text-transform: uppercase;
   transition: transform 80ms ease-in;
   margin-top: 1rem;
+  cursor: pointer;
 }
 
 button:active {

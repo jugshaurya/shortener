@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#ddd" />
   <meta name="description" content="Yet Another URL Shortner Website." />
-  <link rel="icon" href="assets/favicon.png" />
-  <link rel="stylesheet" href="index.css">
+  <link rel="icon" href="favicon.png" />
+  <link rel="stylesheet" href="style.css">
   <title>URL Shortner - Shaurya </title>
 </head>
 
@@ -21,9 +21,9 @@
           <div class="result"></div>
 
           <h2>🐅 Welcome Again!</h2>
-          <input type="text" placeholder="URL" id="url2" name="url" />
-          <input type="text" placeholder="Short Name" id="shortname2" name="name" />
-          <button>📌 Short it 📌</button>
+          <input type="text" placeholder="URL" id="url2" name="url" required />
+          <input type="text" placeholder="Short Name" id="shortname2" name="name" required />
+          <button type="submit">📌 Short it 📌</button>
         </form>
       </div>
       <div class="form-container in-container">
@@ -31,9 +31,9 @@
           <div class="result"></div>
 
           <h2> 🐅 Welcome </h2>
-          <input type="text" placeholder="URL" id="url1" name="url" />
-          <input type="text" placeholder="Short Name" id="shortname1" name="name" />
-          <button>📌 Short it 📌</button>
+          <input type="text" placeholder="URL" id="url1" name="url" required />
+          <input type="text" placeholder="Short Name" id="shortname1" name="name" required />
+          <button type="submit">📌 Short it 📌</button>
         </form>
       </div>
       <div class="overlay-container">
@@ -47,7 +47,7 @@
           <div class="overlay-panel overlay-right">
             <h1>👻 Hello, Friend!</h1>
             <p>Enter your URL and a short name that can easily be remembered.</p>
-            <button type="submit" class="ghost" id="up">Slide</button>
+            <button class="ghost" id="up">Slide</button>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@
   </div>
   <footer>
     <p>
-      Created with 💙 by Shaurya Singhal
+      &copy; 2020 - Created with 💙 by Shaurya Singhal
     </p>
   </footer>
 
@@ -82,7 +82,7 @@
         })
           .then((obj => {
             const deployed_url = "https://little.now.sh";
-            // in development change it to https://localhost:8081
+            // in development change it to https://localhost:8082
             const newLink = `${deployed_url}/s/${obj.name}`;
             $result.html(`<a class="short-link" href=${newLink} target="_blank"> ${newLink} </a>`);
             $("#url1").val("")
@@ -120,4 +120,3 @@
 </body>
 
 </html>
-gxagFIGruZc9ki9z

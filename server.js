@@ -1,6 +1,10 @@
 const express = require("express");
 const morgan = require("morgan");
 const app = express();
+const hbs = require("hbs");
+
+app.set("views", "views"); // setted by default can change to anything we want
+app.set("view engine", "hbs");
 
 const { MongoClient } = require("mongodb");
 const { shortIt, redirectIt } = require("./services/services");
@@ -12,8 +16,7 @@ const client = new MongoClient(
     useUnifiedTopology: true
   }
 );
-
-if (process.env.NODE_ENV === "development") {
+if (!process.env.NODE_ENV) {
   app.use(morgan("tiny"));
 }
 
@@ -25,18 +28,27 @@ app.use(
 );
 app.use(express.json());
 
+app.get("/", (req, res, next) => {
+  res.render("index");
+});
+
 app.post("/api/shortit", shortIt(client));
 app.get("/s/:shortName", redirectIt(client));
+
+// for rest of the routes
+app.use((req, res, next) => {
+  res.redirect("/");
+});
 
 // error middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   const status = err.status || 500;
+  err.status = status;
   res.status(status).json({ message: err.message, status: err.status });
-  // res.redirect(`/error.html?msg=${err.message}&status=${status}`);
 });
 
-const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT || 8082;
 app.listen(PORT, () => {
   console.log("Listening on Port", PORT);
 });

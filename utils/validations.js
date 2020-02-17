@@ -6,8 +6,8 @@ const isValidUrl = url => {
     isCorrectURL &&
     url &&
     url.trim() !== "" &&
-    url.length >= 1 &&
-    url.length <= 100
+    url.trim().length >= 1 &&
+    url.trim().length <= 100
   );
 };
 
@@ -17,8 +17,8 @@ const isValidName = name => {
     isCorrectName &&
     name &&
     name.trim() !== "" &&
-    name.length >= 1 &&
-    name.length <= 20
+    name.trim().length >= 1 &&
+    name.trim().length <= 20
   );
 };
 

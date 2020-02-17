@@ -39,19 +39,20 @@ const shortIt = client => async (req, res, next) => {
 const redirectIt = client => async (req, res, next) => {
   try {
     const { shortName } = req.params;
-    const isValidName = isValidName(shortName);
-    if (!isValidName) {
-      const error = new Error("Not a Valid Short Name");
-      error.status = 404; // Not Found
-      throw error;
+    if (!isValidName(shortName)) {
+      return res.render("404", {
+        message: "Not a Valid Short Name",
+        status: 404 // Not Found
+      });
     }
 
     const collection = await getCollection(client);
-    const doc = await collection.findOne({ name });
+    const doc = await collection.findOne({ name: shortName });
     if (!doc) {
-      const error = new Error("No URL Found For this short URL");
-      error.status = 404; // Not Found
-      throw error;
+      return res.render("404", {
+        message: "No URL Found For this short URL",
+        status: 404 // Not Found
+      });
     }
 
     res.redirect(`${doc.url}`);
