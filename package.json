@@ -2,9 +2,9 @@
   "name": "urlshortner",
   "version": "1.0.0",
   "description": "Let's Build a Full Stack Url Shortner",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",

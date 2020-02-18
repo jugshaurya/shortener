@@ -28,6 +28,7 @@
       </div>
       <div class="form-container in-container">
         <form action="api/short" method="POST">
+
           <div class="result"></div>
 
           <h2> 🐅 Welcome </h2>
@@ -66,6 +67,7 @@
   <script>
     $(() => {
       const $result = $(".result");
+      let isLoading = false;
       $("form").submit(event => {
         // JS Gracefull Fallback
         event.preventDefault();
@@ -73,6 +75,8 @@
           url: $("#url1").val() || $("#url2").val(),
           name: $("#shortname1").val() || $("#shortname2").val()
         }
+        isLoading = true;
+        $result.html(`<div class="loading"> <img src="loading.svg" alt="waiting..."/> </div>`);
         $.ajax({
           type: "POST",
           url: "api/shortit",
@@ -81,6 +85,7 @@
           contentType: "application/json;charset=utf-8"
         })
           .then((obj => {
+            isLoading = false;
             const deployed_url = "https://little.now.sh";
             // in development change it to https://localhost:8082
             const newLink = `${deployed_url}/s/${obj.name}`;
@@ -91,6 +96,7 @@
             $("#shortname2").val("")
           }))
           .catch(err => {
+            isLoading = false;
             $result.html(`<div class="alert alert-danger" role="alert"> ${err.responseJSON.message} </div>`);
             $("#url1").val("")
             $("#url2").val("")

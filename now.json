@@ -6,7 +6,7 @@
   },
   "builds": [
     {
-      "src": "server.js",
+      "src": "index.js",
       "use": "@now/node-server"
     },
     {
@@ -16,18 +16,22 @@
   ],
   "routes": [
     {
-      "src": "/api/short",
-      "dest": "/server.js",
+      "src": "/api/shortit",
+      "dest": "/index.js",
       "methods": ["POST"]
     },
     {
       "src": "/s/(.*)",
-      "dest": "/server.js",
+      "dest": "/index.js",
       "methods": ["GET"]
     },
     {
-      "src": "/(.*)",
+      "src": "/(.css|png|svg)",
       "dest": "/public/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "index.js"
     }
   ]
 }

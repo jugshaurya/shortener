@@ -2,8 +2,8 @@ const express = require("express");
 const morgan = require("morgan");
 const app = express();
 const hbs = require("hbs");
-
-app.set("views", "views"); // setted by default can change to anything we want
+const path = require("path");
+app.set("views", path.join(__dirname, "views")); // setted by default can change to anything we want
 app.set("view engine", "hbs");
 
 const { MongoClient } = require("mongodb");
@@ -16,11 +16,12 @@ const client = new MongoClient(
     useUnifiedTopology: true
   }
 );
+
 if (!process.env.NODE_ENV) {
   app.use(morgan("tiny"));
 }
 
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(
   express.urlencoded({
     extended: true

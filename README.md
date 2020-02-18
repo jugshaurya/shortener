@@ -1,8 +1,6 @@
-# :octocat: urlShortner
+## :octocat: urlShortner ([visit](https://little.now.sh))
 
-<img src="https://img.shields.io/badge/made%20with-mongodb-green.svg" alt="made with mongodb">
- <img src="https://img.shields.io/badge/made%20with-express-black.svg" alt="made with express">
-<img src="https://img.shields.io/github/last-commit/jugshaurya/urlShortner" alt="last-commit"> <img src="https://img.shields.io/github/languages/code-size/jugshaurya/urlShortner" alt="code-size">
+<img src="https://img.shields.io/badge/made%20with-mongodb-green.svg" alt="made with mongodb"> <img src="https://img.shields.io/badge/made%20with-express-black.svg" alt="made with express"> <img src="https://img.shields.io/badge/made%20with-hbs-orange.svg" alt="made with hbs"> <img src="https://img.shields.io/github/last-commit/jugshaurya/urlShortner" alt="last-commit"> <img src="https://img.shields.io/github/languages/code-size/jugshaurya/urlShortner" alt="code-size">
 
 Yet another shortner !
 
@@ -13,6 +11,10 @@ Full stack Url Shortner with tech stack :
 (N)ode
  + now
 ```
+
+### Peek a boo!
+
+![progress](app.gif)
 
 ### User Guide
 
@@ -28,6 +30,42 @@ Full stack Url Shortner with tech stack :
 ```
     npm run dev
     visit localhost:8081 to test the app
+```
+
+### API EndPoints
+
+| Http Method | Endpoint      |
+| ----------- | ------------- |
+| POST        | /api/shortit  |
+| GET         | /s/:shortName |
+| GET         | /             |
+| GET         | /(\*)         |
+
+##### /api/shortit (POST)
+
+```javascript
+{
+    url: "https://www.google.com",
+    name: "go"
+}
+```
+
+##### /s/:shortname (GET)
+
+```javascript
+redirect(url);
+```
+
+##### / (GET)
+
+```javascript
+render("index.hbs");
+```
+
+##### /(\*) (GET)
+
+```javascript
+redirect("/");
 ```
 
 ### Followed Steps
