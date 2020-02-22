@@ -1,8 +1,8 @@
-## :octocat: urlShortner ([visit](https://little.now.sh))
+## :octocat: urlShortener ([visit](https://little.now.sh))
 
 <img src="https://img.shields.io/badge/made%20with-mongodb-green.svg" alt="made with mongodb"> <img src="https://img.shields.io/badge/made%20with-express-black.svg" alt="made with express"> <img src="https://img.shields.io/badge/made%20with-hbs-orange.svg" alt="made with hbs"> <img src="https://img.shields.io/github/last-commit/jugshaurya/urlShortner" alt="last-commit"> <img src="https://img.shields.io/github/languages/code-size/jugshaurya/urlShortner" alt="code-size">
 
-Yet another shortner !
+Yet another shortener !
 
 ```
 Full stack Url Shortner with tech stack :
